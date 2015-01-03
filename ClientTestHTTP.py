@@ -76,11 +76,13 @@ class GUI(object):
         Gtk.main_quit(*args)
 
     def sendRequest(self, button):
+        # Get data from GTK widgets
         ip = self.builder.get_object('ipaddress').get_text()
         port = self.builder.get_object('port').get_text()
         method = self.builder.get_object('method').get_text()
         path = self.builder.get_object('path').get_text()
         host = self.builder.get_object('host').get_text()
+        # Send request
         client=ClientTestHTTP(ip, port)
         client.request(method, path, host, log=self.log.write)
 
@@ -93,4 +95,5 @@ class GUI(object):
         self.window.show_all()
         Gtk.main()
 
+# Start GUI
 GUI()
