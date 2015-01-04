@@ -69,11 +69,17 @@ class BufferWrapper(object):
     def write(self, text):
         self.buffer.insert_at_cursor(text + '\n')
 
+    def clear(self):
+        self.buffer.set_text('')
+
 
 class GUI(object):
 
     def onDeleteWindow(self, *args):
         Gtk.main_quit(*args)
+
+    def clearLog(self, *args):
+        self.log.clear()
 
     def sendRequest(self, button):
         # Get data from GTK widgets
